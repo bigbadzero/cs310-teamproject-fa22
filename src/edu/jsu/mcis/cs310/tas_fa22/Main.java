@@ -22,8 +22,7 @@ public class Main {
         Shift shift = shiftDAO.find(1);
         
         // output should be "Test Badge: #31A25435 (Munday, Paul J)"
-        
-        System.err.println("Description: " + shift.getDescription());
+        System.err.println(shift.toString());
 
     }
 

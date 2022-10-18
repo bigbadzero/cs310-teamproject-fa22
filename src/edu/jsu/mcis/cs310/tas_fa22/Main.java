@@ -18,11 +18,8 @@ public class Main {
         ShiftDAO shiftDAO = daoFactory.getShiftDAO();
         PunchDAO punchDAO = daoFactory.getPunchDAO();
 
-        Badge badge = badgeDAO.find("4E6E296E");
-        Punch punch = new Punch(105, badge, EventType.CLOCK_IN);
-        int test = punchDAO.create(punch);
-        Punch punch2 = punchDAO.find(3433);
-        System.err.println(punch2.printOriginal());
+        Department department = new Department(1, "Assembly", 103);
+        System.err.println(department.toString());
 
 
 

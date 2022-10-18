@@ -77,7 +77,9 @@ public class Shift {
                 + ": " + getShiftStart().toString()
                 + " - "
                 + getShiftStop().toString()
-                + "; Lunch:"
+                +" ("
+                + getShiftDuration()
+                +" minutes); Lunch: "
                 + getLunchStart()
                 + " - " + getLunchStop()
                 + " (" + getLunchDuration()

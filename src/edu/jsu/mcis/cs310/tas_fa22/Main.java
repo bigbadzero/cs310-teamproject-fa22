@@ -16,13 +16,17 @@ public class Main {
         DAOFactory daoFactory = new DAOFactory("tas.jdbc");
         BadgeDAO badgeDAO = daoFactory.getBadgeDAO();
         ShiftDAO shiftDAO = daoFactory.getShiftDAO();
-        
-        // find badge
+        PunchDAO punchDAO = daoFactory.getPunchDAO();
 
-        Shift shift = shiftDAO.find(1);
-        
-        // output should be "Test Badge: #31A25435 (Munday, Paul J)"
-        System.err.println(shift.toString());
+        Badge badge = badgeDAO.find("4E6E296E");
+        Punch punch = new Punch(105, badge, EventType.CLOCK_IN);
+        int test = punchDAO.create(punch);
+        Punch punch2 = punchDAO.find(3433);
+        System.err.println(punch2.printOriginal());
+
+
+
+
 
     }
 

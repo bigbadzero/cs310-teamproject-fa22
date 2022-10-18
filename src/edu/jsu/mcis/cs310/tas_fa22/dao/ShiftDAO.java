@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class ShiftDAO {
     private static final String QUERY_FIND = "SELECT * FROM shift WHERE id = ?";
+    private static final String QUERY_FIND_BY_BADGE = "select  s.id, s.description, s.shiftstart, s.shiftstop, s.roundinterval, s.graceperiod, s.dockpenalty, s.lunchstart, s.lunchstop, s.lunchthreshold from  employee e join badge b  on b.id = e.badgeid join shift s on s.id = e.shiftid   where b.id = ?";
 
     private final DAOFactory daoFactory;
     private HashMap<String,String> ShitMap = new HashMap<String,String>();
@@ -84,8 +85,8 @@ public class ShiftDAO {
             Connection conn = daoFactory.getConnection();
 
             if(conn.isValid(0)){
-                ps = conn.prepareStatement(QUERY_FIND);
-                ps.setInt(1, Integer.parseInt(badge.getId()));
+                ps = conn.prepareStatement(QUERY_FIND_BY_BADGE);
+                ps.setString(1, badge.getId());
 
                 boolean hasResults = ps.execute();
 
